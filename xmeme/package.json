@@ -1,5 +1,5 @@
 {
-  "name": "xmeme-backend",
+  "name": "xmeme",
   "version": "1.0.0",
   "description": "XMeme Platform Backend",
   "main": "server.js",

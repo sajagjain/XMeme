@@ -49,5 +49,3 @@ module.exports.patch = async (req,res)=>{
     var result = await Meme.updateOne({_id  : new mongoose.Types.ObjectId(id)}, {$set: updatedMeme});
     return res.json(result);
 }
-
-
