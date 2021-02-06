@@ -1,0 +1,64 @@
+/* Dark Theme CSS */
+body.dark header{
+    background-color:#171717 !important;
+    color:white !important;
+}
+
+body.dark main{
+    background-color:#171717;
+}
+
+body.dark .card-body{
+    background-color: black;
+    color:white;
+}
+
+body.dark .side-nav{
+    background: black;
+    color: white;
+}
+
+body.dark input{
+    background-color: #151515;
+    color: white;
+    box-shadow: none;
+    border: none !important;
+}
+
+body.dark textarea{
+    background-color: #151515;
+    color: white;
+    box-shadow: none;
+    border: none !important;
+}
+
+body.dark input:focus{
+    background-color: #151515;
+    color: white;
+    box-shadow: none;
+    border: none !important;
+}
+
+body.dark textarea:focus{
+    background-color: #151515;
+    color: white;
+    box-shadow: none;
+    border: none !important;
+}
+
+body.dark .meme-btn{
+    color: white;
+}
+
+body.dark #create-meme-btn{
+    background: -webkit-linear-gradient(45deg, #ff5894, #8441A4 80%);
+}
+
+body.dark .meme-image{
+    background-color: #424242 !important;
+}
+
+body.dark .minutes-ago{
+    background: white !important;
+    color: black !important;
+}

@@ -112,78 +112,20 @@ main {
     padding:10px;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* Dark Theme CSS */
-body.dark header{
-    background-color:#171717 !important;
-    color:white !important;
+.meme-like-btn.liked{
+    color:red;
 }
 
-body.dark main{
-    background-color:#171717;
-}
-
-body.dark .card-body{
-    background-color: black;
-    color:white;
-}
-
-body.dark .side-nav{
+.minutes-ago{
     background: black;
-    color: white;
+    float: right;
+    position: absolute;
+    right: 10px;
+    top: 10px;
 }
 
-body.dark input{
-    background-color: #151515;
-    color: white;
-    box-shadow: none;
-    border: none !important;
+.meme-like-btn{
+    cursor: pointer;
 }
 
-body.dark textarea{
-    background-color: #151515;
-    color: white;
-    box-shadow: none;
-    border: none !important;
-}
 
-body.dark input:focus{
-    background-color: #151515;
-    color: white;
-    box-shadow: none;
-    border: none !important;
-}
-
-body.dark textarea:focus{
-    background-color: #151515;
-    color: white;
-    box-shadow: none;
-    border: none !important;
-}
-
-body.dark .meme-btn{
-    color: white;
-}
-
-body.dark #create-meme-btn{
-    background: -webkit-linear-gradient(45deg, #ff5894, #8441A4 80%);
-}
-
-body.dark .meme-image{
-    background-color: #424242 !important;
-}

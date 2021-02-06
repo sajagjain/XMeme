@@ -14,7 +14,11 @@ const memeSchema = new mongoose.Schema({
     name: String,
     url:String,
     caption: String,
-    created: Date
+    created: Date,
+    likes:{ 
+        type: Number,
+        default : 0
+    }
 });
 
 memeSchema.plugin(normalize);
