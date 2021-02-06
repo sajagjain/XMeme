@@ -179,7 +179,7 @@ MemesClient.prototype.showMemes = function () {
     if (this.memes && this.memes.length > 0) {
         for (var meme of this.memes) {
             html += `
-                <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
                     <div class="card shadow meme-card border-0 mt-5">
                         <div class="card-body">
                             <h5 class="card-title mb-0">${meme.name}</h5>
