@@ -1,0 +1,189 @@
+.meme-image{
+    overflow: hidden;
+    background: black;
+}
+
+.meme-card{
+    transition: transform 0.5s;
+}
+
+.meme-card:hover img{
+    /* transform: scale(1.05); */
+}
+
+.meme-card img {
+    object-fit: contain;
+    transition: transform 0.5s;
+    border-radius: 0px !important;
+    height: 350px;
+}
+
+.theme-changer{
+    font-size: 35px;
+    margin-left: 15px;
+    color: #8441A4;
+    cursor: pointer;
+}
+
+.meme-like-btn{
+    font-size: 1.5em;
+}
+
+.side-nav{
+    min-width: 400px;
+    position: absolute;
+    z-index: 2;
+    background: white;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    height:100vh;
+}
+
+label{
+    font-size: 15px;
+    margin-bottom: 5px;
+    margin-left: 2px;
+}
+
+.nav-link{
+    transition: font-size 0.5s;
+}
+.nav-link:hover{
+    font-size: 25px;
+}
+
+.create-meme-btn-container{
+    /* position: absolute; */
+    margin:10px;
+    text-align: end;
+}
+
+header{
+    flex: 1 0 auto;
+    padding-bottom: 15px;
+}
+
+main{
+    flex: 1 1 auto;
+    padding-bottom: 50px;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+main::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+main {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.navbar-brand{
+    background: -webkit-linear-gradient(45deg, #ff5894, #8441A4 80%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.nav-link{
+    color: #8441A4;
+}
+
+.nav-link:hover{
+    color: #8441A4;
+}
+
+.create-meme-err-container{
+    margin: 10px 0px;
+    background: red;
+    color: white;
+    text-align: left;
+    /* white-space: break-spaces; */
+    padding: 10px;
+}
+
+.create-meme-success-container{
+    margin: 10px 0px;
+    background: green;
+    color: white;
+    text-align: left;
+    /* white-space: pre; */
+    padding:10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Dark Theme CSS */
+body.dark header{
+    background-color:#171717 !important;
+    color:white !important;
+}
+
+body.dark main{
+    background-color:#171717;
+}
+
+body.dark .card-body{
+    background-color: black;
+    color:white;
+}
+
+body.dark .side-nav{
+    background: black;
+    color: white;
+}
+
+body.dark input{
+    background-color: #151515;
+    color: white;
+    box-shadow: none;
+    border: none !important;
+}
+
+body.dark textarea{
+    background-color: #151515;
+    color: white;
+    box-shadow: none;
+    border: none !important;
+}
+
+body.dark input:focus{
+    background-color: #151515;
+    color: white;
+    box-shadow: none;
+    border: none !important;
+}
+
+body.dark textarea:focus{
+    background-color: #151515;
+    color: white;
+    box-shadow: none;
+    border: none !important;
+}
+
+body.dark .meme-btn{
+    color: white;
+}
+
+body.dark #create-meme-btn{
+    background: -webkit-linear-gradient(45deg, #ff5894, #8441A4 80%);
+}
+
+body.dark .meme-image{
+    background-color: #424242 !important;
+}

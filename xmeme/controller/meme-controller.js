@@ -5,7 +5,7 @@ module.exports.get = async (req,res)=>{
     //If id in query instead, then redirect to getById handler
     if(req.query.id) return this.getById(req,res);
     
-    let memes = await Meme.find({});
+    let memes = await Meme.find({}).sort({created:-1}).limit(100);
     
     res.status(200);
     res.json(memes);
@@ -34,8 +34,9 @@ module.exports.post = async (req,res)=>{
     let name = params["name"];
     let url = params["url"];
     let caption = params["caption"];
+    const created = new Date();
 
-    let meme = new Meme({name,url,caption});
+    let meme = new Meme({name,url,caption, created});
     var result = await meme.save();
 
     res.status(201);

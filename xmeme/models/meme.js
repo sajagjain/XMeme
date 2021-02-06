@@ -13,7 +13,8 @@ const memeSchema = new mongoose.Schema({
     id:String,
     name: String,
     url:String,
-    caption: String
+    caption: String,
+    created: Date
 });
 
 memeSchema.plugin(normalize);
