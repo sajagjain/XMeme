@@ -7,6 +7,7 @@ Pending Things:
 4. Forking based on cpu
 5. If already exist then send back error
 6. Comments  & Modularity
+7. CORS
 
 
 ##FrontEnd
