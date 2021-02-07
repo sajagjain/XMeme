@@ -1,3 +1,6 @@
+//INFO: Extending Meme Client For Top 10 Page
+
+//Top 10 Initialized Function
 MemesClient.prototype.initTop10 = function () {
     this.getMemesTop10(1,(data) => {
         console.log(data);
@@ -8,6 +11,7 @@ MemesClient.prototype.initTop10 = function () {
     });
 };
 
+//Get Top 10 Memes of Time Frame
 MemesClient.prototype.getMemesTop10 = function (frame,cb) {
     $.ajax({
         url: `/memes/top10/${frame}`,
@@ -21,6 +25,7 @@ MemesClient.prototype.getMemesTop10 = function (frame,cb) {
     });
 };
 
+//Render Top 10 Memes on UI
 MemesClient.prototype.showTop10Memes = function(){
     var html = '';
     if (this.top10 && this.top10.length > 0) {

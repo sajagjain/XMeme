@@ -1,12 +1,42 @@
 MemesClient.prototype.initEvents = function () {
     var self = this;
+
+    //Click Events
+
     $(document).on('click', '#cancel-meme-btn', function () {
         $('.side-nav').removeClass('d-flex').addClass('d-none');
         $('.side-nav-edit').removeClass('d-flex').addClass('d-none');
     });
+
+    $(document).on('blur', '#url', function () {
+        var url = $(this).val();
+        self.updatePreview(url,'#img-preview');
+    });
+
+    $(document).on('blur', '#edit-url', function () {
+        var url = $(this).val();
+        self.updatePreview(url,'#edit-img-preview');
+    });
+
+    $(document).on('click', '.theme-changer', function () {
+        $('body').toggleClass('dark');
+        var isDark = $('body').hasClass('dark');
+        if (isDark) {
+            localStorage.setItem("light", 'false');
+        } else {
+            localStorage.setItem("light", 'true');
+        }
+
+    });
+
+    $(document).on('click', '.close-alert', function () {
+        $(this).parent().removeClass('d-flex').addClass("d-none");
+    });
+
     $(document).on('click', '.open-create', function () {
         $('.side-nav').addClass('d-flex').removeClass('d-none');
     });
+
     $(document).on('click', '.open-edit', function () {
         var memeId = $(this).data('meme-id');
         var data = self.memes.find(a => a.id == memeId);
@@ -18,6 +48,9 @@ MemesClient.prototype.initEvents = function () {
 
         $('.side-nav-edit').addClass('d-flex').removeClass('d-none');
     });
+
+    //Data Action Click Events
+
     $(document).on('click', '#create-meme-btn', function () {
         var name = $('#name').val();
         var caption = $('#caption').val();
@@ -25,7 +58,7 @@ MemesClient.prototype.initEvents = function () {
         var errMsg = [];
         var isUrlValid = self.isValidHttpUrl(url);
 
-
+        //Check if required fields have data and all fields are valid
         if (name.trim().length == 0 || caption.trim().length > 500 || url.trim().length == 0 || !isUrlValid) {
             if (name.trim().length == 0) {
                 errMsg.push("Name cannot be empty");
@@ -37,13 +70,15 @@ MemesClient.prototype.initEvents = function () {
             if (url.trim().length == 0) {
                 errMsg.push("Url cannot be empty");
             }
-
             if (!isUrlValid) {
                 errMsg.push("Url is not valid");
             }
 
+            //Create Alert with erros
             self.createAlert(false, errMsg);
-        } else {
+        }
+        //Else send request to post data
+        else {
             $.ajax({
                 url: `/memes`,
                 method: 'POST',
@@ -75,7 +110,7 @@ MemesClient.prototype.initEvents = function () {
 
         var currMeme = self.memes.find(a=>a.id == memeId);
 
-
+        //Check if required fields have data and all fields are valid
         if (caption.trim().length > 500 || url.trim().length == 0 || !isUrlValid || (currMeme.caption == caption && currMeme.url == url)) {
 
             if (caption.trim().length > 500) {
@@ -84,7 +119,6 @@ MemesClient.prototype.initEvents = function () {
             if (url.trim().length == 0) {
                 errMsg.push("Url cannot be empty");
             }
-
             if (!isUrlValid) {
                 errMsg.push("Url is not valid");
             }
@@ -93,7 +127,9 @@ MemesClient.prototype.initEvents = function () {
             }
 
             self.createAlert(false, errMsg);
-        } else {
+        } 
+        //Only Send Modified Data
+        else {
             var data={};
             if(currMeme.caption !== caption){
                 data['caption'] = caption;
@@ -125,49 +161,14 @@ MemesClient.prototype.initEvents = function () {
         }
     });
 
-    $(document).on('blur', '#url', function () {
-        var url = $(this).val();
-
-        if (url.trim().length == 0) {
-            $('#img-preview').attr('src', 'https://i.imgflip.com/4wymt6.jpg');
-            return;
-        }
-
-        $.ajax({
-            url: url,
-            method: 'GET',
-            success: function () {
-                $('#img-preview').attr('src', url);
-            },
-            error: function (err) {
-                $('#img-preview').attr('src', 'https://lh3.googleusercontent.com/proxy/uL-_Tdc3YMt8dtD7NiLwmn02HrpPduoOSnKGDGQdcMJAcXwh0qeTLk3rBihPf44P6pwLHuJiAvXtZwl_hyXoJra3VVpKcq_jcaiBSq0FVqCIPBHj8MD6l6WBpQ4DjKTpm_LTBjXbG2IKW6ENI8ssOU2GuVTdHq9Gy0o');
-            }
-        })
-
-
-    });
-
-    $(document).on('click', '.theme-changer', function () {
-        $('body').toggleClass('dark');
-        var isDark = $('body').hasClass('dark');
-        if (isDark) {
-            localStorage.setItem("light", 'false');
-        } else {
-            localStorage.setItem("light", 'true');
-        }
-
-    });
-
-    $(document).on('click', '.close-alert', function () {
-        $(this).parent().removeClass('d-flex').addClass("d-none");
-    });
-
     $(document).on('click', '.meme-like-btn', function () {
         var currLikeBtnRef = this;
         var memeId = $(this).data('meme-id');
         var meme = self.memes.find(a => a.id == memeId);
         var noOfLikes = meme.likes;
         var hasLiked = $(this).hasClass('liked');
+
+        //Check if Already Liked if yes then unlike else like
         if (hasLiked == false) {
             $(this).addClass('liked');
             $(this).attr('name', 'heart');

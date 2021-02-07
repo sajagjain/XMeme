@@ -70,6 +70,14 @@ label{
     text-align: end;
 }
 
+#edit-img-preview{
+    width: 100%;
+}
+
+#img-preview{
+    width: 100%;
+}
+
 .edit-meme-btn-container{
     margin:10px;
     text-align: end;

@@ -1,14 +1,7 @@
 const mongoose = require('mongoose');
 const normalize = require('normalize-mongoose');
 
-
-// const autoIncrement = require("mongodb-autoincrement");
-
-// autoIncrement.setDefaults({
-//     collection: "counters",     // collection name for counters, default: counters
-//     step: 1,                    // auto increment step
-// });
-
+//Meme Schema
 const memeSchema = new mongoose.Schema({
     id:String,
     name: String,
@@ -21,8 +14,7 @@ const memeSchema = new mongoose.Schema({
     }
 });
 
+//Convert _id to id
 memeSchema.plugin(normalize);
-
-// memeSchema.plugin(autoIncrement.mongoosePlugin);
 
 module.exports = mongoose.model('Meme',memeSchema);

@@ -3,7 +3,8 @@ require('dotenv').config();
 require('./db/db');
 
 const bodyParser = require('body-parser');
-const memeRouter = require('./routes/meme-route');
+const memeRouter = require('./routes/meme-router');
+const viewsRouter = require('./routes/views-router');
 const path = require('path');
 const express = require('express');
 const app = express();
@@ -16,19 +17,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname,'public')));
 
 
-//API
-//Meme Related Calls & Operations
+//API: Meme Related Calls & Operations
 app.use('/memes',memeRouter);
-
-//Views
-//Home Page
-app.get("/",async (req,res)=>{
-    return res.render('pages/index');
-});
-//Top 10 Page
-app.get("/top",async (req,res)=>{
-    return res.render('pages/top10');
-});
+//Views Endpoints
+app.use('/',viewsRouter);
 
 app.listen(port,function(e){
     console.log('App Listening on port',port);

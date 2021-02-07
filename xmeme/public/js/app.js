@@ -2,6 +2,7 @@ function MemesClient() {
     this.memes = [];
     this.top10 = [];
 
+    //Helper Methods
     this.timeSince = function (date) {
 
         var seconds = Math.floor((new Date() - date) / 1000);
@@ -28,7 +29,7 @@ function MemesClient() {
           return Math.floor(interval) + " minutes";
         }
         return Math.floor(seconds) + " seconds";
-      }
+    }
 
     this.isValidHttpUrl = function (string) {
         let url;
@@ -40,9 +41,28 @@ function MemesClient() {
         }
       
         return url.protocol === "http:" || url.protocol === "https:";
-      }
+    }
+
+    this.updatePreview = function(url,selector){
+        if (url.trim().length == 0) {
+            $(selector).attr('src', 'https://i.imgflip.com/4wymt6.jpg');
+            return;
+        }
+
+        $.ajax({
+            url: url,
+            method: 'GET',
+            success: function () {
+                $(selector).attr('src', url);
+            },
+            error: function (err) {
+                $(selector).attr('src', 'https://lh3.googleusercontent.com/proxy/uL-_Tdc3YMt8dtD7NiLwmn02HrpPduoOSnKGDGQdcMJAcXwh0qeTLk3rBihPf44P6pwLHuJiAvXtZwl_hyXoJra3VVpKcq_jcaiBSq0FVqCIPBHj8MD6l6WBpQ4DjKTpm_LTBjXbG2IKW6ENI8ssOU2GuVTdHq9Gy0o');
+            }
+        })
+    }
 }
 
+//Initialization Method
 MemesClient.prototype.init = function () {
     this.getMemes((data) => {
         console.log(data);
@@ -52,6 +72,7 @@ MemesClient.prototype.init = function () {
     });
 };
 
+//Create Validation Alerts for Create Edit
 MemesClient.prototype.createAlert = function (isGood, msg) {
     if (isGood) {
         $('.create-meme-success-container').find('span').text(msg);
@@ -74,6 +95,7 @@ MemesClient.prototype.createAlert = function (isGood, msg) {
     }
 }
 
+//Get 100 Latest Memes from Server
 MemesClient.prototype.getMemes = function (cb) {
     $.ajax({
         url: '/memes',
@@ -87,6 +109,7 @@ MemesClient.prototype.getMemes = function (cb) {
     });
 };
 
+//Helps Refresh UI Cards
 MemesClient.prototype.showMemes = function () {
     var html = '';
     if (this.memes && this.memes.length > 0) {
