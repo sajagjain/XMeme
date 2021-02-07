@@ -128,4 +128,8 @@ main {
     cursor: pointer;
 }
 
-
+@media screen and (max-width: 450px){
+    .side-nav{
+        min-width: 100% !important;
+    }
+}
