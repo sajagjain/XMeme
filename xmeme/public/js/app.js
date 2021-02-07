@@ -68,7 +68,7 @@ MemesClient.prototype.initEvents = function () {
             self.createAlert(false,errMsg);
          } else {
             $.ajax({
-                url: `/meme`,
+                url: `/memes`,
                 method: 'POST',
                 data:{name,caption,url},
                 success: (data) => {
@@ -125,7 +125,7 @@ MemesClient.prototype.initEvents = function () {
         
         if(memeId !== null || memeId !== ''){
             $.ajax({
-                url:`/meme/${memeId}`,
+                url:`/memes/${memeId}`,
                 method: 'PATCH',
                 data: {
                     likes: noOfLikes
@@ -167,7 +167,7 @@ MemesClient.prototype.createAlert = function (isGood, msg) {
 
 MemesClient.prototype.getMemes = function (cb) {
     $.ajax({
-        url: '/meme',
+        url: '/memes',
         method: 'GET',
         success: (data) => {
             cb(data);

@@ -18,7 +18,7 @@ app.use(express.static(path.join(__dirname,'public')));
 
 //API
 //Meme Related Calls & Operations
-app.use('/meme',memeRouter);
+app.use('/memes',memeRouter);
 
 //Views
 //Home Page
