@@ -1,13 +1,11 @@
 ##Backend
 
 Pending Things:
-1. Error Handling
-2. Logging
-3. Caching
+1. Error Handling - DONE
+3. Caching - DONE
 4. Forking based on cpu
 5. If already exist then send back error - DONE
 6. Comments  & Modularity - DONE
-7. CORS
 8. Documentation
 
 
