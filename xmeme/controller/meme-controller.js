@@ -29,11 +29,11 @@ module.exports.getById = async (req,res)=>{
 }
 
 module.exports.post = async (req,res)=>{
-    let params = req.query;
+    let body = req.body;
 
-    let name = params["name"];
-    let url = params["url"];
-    let caption = params["caption"];
+    let name = body["name"];
+    let url = body["url"];
+    let caption = body["caption"];
     const created = new Date();
 
     let meme = new Meme({name,url,caption, created});

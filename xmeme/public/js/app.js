@@ -68,8 +68,9 @@ MemesClient.prototype.initEvents = function () {
             self.createAlert(false,errMsg);
          } else {
             $.ajax({
-                url: `/meme?name=${name}&caption=${caption}&url=${url}`,
+                url: `/meme`,
                 method: 'POST',
+                data:{name,caption,url},
                 success: (data) => {
                     if (data.id !== null) {
                         self.memes.unshift({ name, caption, url, created: new Date(), likes: 0 });
