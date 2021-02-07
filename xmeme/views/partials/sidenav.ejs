@@ -1,0 +1,35 @@
+<div class="side-nav d-none flex-column shadow" style="max-width:400px;min-width:300px;">
+    <div class="container" style="flex: 1 1 auto;overflow:auto">
+        <h3 style="margin-top: 50px;margin-bottom: 30px;">Create</h3>
+        <label for="name">Name</label>
+        <input class="form-control" type="text" id="name" name="name" />
+        <br />
+        <label for="caption">Caption</label>
+        <textarea rows="5" class="form-control" id="caption" name="caption"></textarea>
+        <br />
+        <label for="url">URL</label>
+        <input class="form-control" type="text" id="url" name="url" />
+        <br />
+        <div>Preview</div>
+        <div class="image-responsive" style="flex: 1 0 auto;">
+            <img id="img-preview" class="img-fluid mb-5" src="https://i.imgflip.com/4wymt6.jpg" />
+        </div>
+    </div>
+    <div class="create-meme-success-container d-none flex-row">
+        <span style="flex: 1 1 auto;">Meme Created Successfully</span>
+        <ion-icon class="close-alert" style="font-size: 25px;cursor:pointer;" name="close-outline"></ion-icon>
+    </div>
+    <div class="create-meme-err-container d-none flex-row">
+        <div style="flex: 1 1 auto;">
+            <ul class="mb-0">
+                <li>Following Errors in Code</li>
+                <li>New Line Error</li>
+            </ul>
+        </div>
+        <ion-icon class="close-alert" style="font-size: 25px;cursor:pointer;" name="close-outline"></ion-icon>
+    </div>
+    <div class="create-meme-btn-container">
+        <button class="meme-btn btn btn-outline-dark float-right" id="cancel-meme-btn">Cancel</button>
+        <button class="meme-btn btn btn-dark float-right" id="create-meme-btn">Create</button>
+    </div>
+</div>

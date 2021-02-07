@@ -1,5 +1,6 @@
 function MemesClient() {
     this.memes = [];
+    this.top10 = [];
 
     this.timeSince = function (date) {
 
@@ -130,6 +131,13 @@ MemesClient.prototype.initEvents = function () {
 
     $(document).on('click', '.theme-changer', function () {
         $('body').toggleClass('dark');
+        var isDark = $('body').hasClass('dark');
+        if(isDark){
+            localStorage.setItem("light",'false');
+        }else{
+            localStorage.setItem("light",'true');
+        }
+    
     });
 
     $(document).on('click', '.close-alert', function () {
@@ -237,6 +245,3 @@ MemesClient.prototype.showMemes = function () {
         $('#meme-container').html('').html(html);
     }
 }
-
-var client = new MemesClient();
-client.init();

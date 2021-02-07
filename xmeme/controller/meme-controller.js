@@ -56,3 +56,27 @@ module.exports.patch = async (req,res)=>{
     var result = await Meme.updateOne({_id  : new mongoose.Types.ObjectId(id)}, {$set: updatedMeme});
     return res.json(result);
 }
+
+module.exports.getTop10 = async (req,res)=>{
+    
+    if(!req.params.frame){
+        res.status(400);
+        return res.json([]);
+    }
+
+    var frame = parseInt(req.params.frame);
+
+    var start;
+    var end = new Date();
+
+    if(frame == 1 || frame == 7 || frame == 30){
+        start = new Date(new Date().getTime() - frame*86400000);
+    }
+    else{
+        res.status(400);
+        return res.json([]);
+    }
+
+    var result = await Meme.find({created: {"$gte": start, "$lt": end}}).sort({likes:-1}).limit(10);
+    return res.json(result);
+}

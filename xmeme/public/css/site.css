@@ -46,12 +46,12 @@ label{
     margin-left: 2px;
 }
 
-.nav-link{
+/* .nav-link{
     transition: font-size 0.5s;
 }
 .nav-link:hover{
     font-size: 25px;
-}
+} */
 
 .create-meme-btn-container{
     /* position: absolute; */

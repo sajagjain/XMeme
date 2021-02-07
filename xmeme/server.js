@@ -25,7 +25,10 @@ app.use('/memes',memeRouter);
 app.get("/",async (req,res)=>{
     return res.render('pages/index');
 });
-
+//Top 10 Page
+app.get("/top",async (req,res)=>{
+    return res.render('pages/top10');
+});
 
 app.listen(port,function(e){
     console.log('App Listening on port',port);

@@ -62,3 +62,11 @@ body.dark .minutes-ago{
     background: white !important;
     color: black !important;
 }
+
+body.dark .navbar-light{
+    background-color: black !important;
+}
+
+body.dark .navbar-light .nav-link{
+    color:white !important;
+}

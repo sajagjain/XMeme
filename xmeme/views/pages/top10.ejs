@@ -16,14 +16,13 @@
 <body class="d-flex dark flex-column position-absolute" style="position: relative;height:100vh;width: 100vw;">
     <!-- Header -->
     <header>
-        <%- include('../partials/header.ejs'); %>
+        <%- include('../partials/header-top10.ejs'); %>
     </header>
     
     <!-- Main Content -->
     <main style="overflow: auto;">
-        <%- include('../partials/sidenav.ejs'); %>
         <div class="container-fluid">
-            <div class="row" id="meme-container">
+            <div class="row" id="top10-meme-container">
             </div>
         </div>
     </main>
@@ -34,9 +33,10 @@
         crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="/js/app.js"></script>
+    <script src="/js/top10.js"></script>
     <script>
         var client = new MemesClient();
-        client.init();
+        client.initTop10();
 
         if(localStorage.getItem("light") == 'true'){
             $('body').removeClass('dark');
