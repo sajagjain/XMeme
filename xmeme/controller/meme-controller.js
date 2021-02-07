@@ -14,7 +14,7 @@ module.exports.get = async (req, res) => {
             memes = cached_memes;
         } else {
             memes = await Meme.find({}).sort({ created: -1 }).limit(100);
-            cache.put('memes', memes, 60 * 1000);
+            cache.put('memes', memes, 1500);
         }
 
         //Send Success with Data
@@ -39,7 +39,7 @@ module.exports.getById = async (req, res) => {
                 meme = cached_meme;
             } else {
                 meme = await Meme.findById(id);
-                cache.put(id, meme, 60 * 1000);
+                cache.put(id, meme, 1500);
             }
 
             //Meme Found
@@ -84,11 +84,11 @@ module.exports.post = async (req, res) => {
             }
             var result = await meme.save();
 
-            //Remove Memes from Cache for consistency
-            cache.del('memes');
-            cache.del('frame1');
-            cache.del('frame7');
-            cache.del('frame30');
+            // //Remove Memes from Cache for consistency
+            // cache.del('memes');
+            // cache.del('frame1');
+            // cache.del('frame7');
+            // cache.del('frame30');
 
             //Send Created
             res.status(201);
@@ -111,12 +111,12 @@ module.exports.patch = async (req, res) => {
         if (id != null && mongoose.Types.ObjectId.isValid(id) && updatedMeme != null) {
             var result = await Meme.updateOne({ _id: new mongoose.Types.ObjectId(id) }, { $set: updatedMeme });
 
-            //Remove Memes & id from cache for consistency
-            cache.del('memes');
-            cache.del(id);
-            cache.del('frame1');
-            cache.del('frame7');
-            cache.del('frame30');
+            // //Remove Memes & id from cache for consistency
+            // cache.del('memes');
+            // cache.del(id);
+            // cache.del('frame1');
+            // cache.del('frame7');
+            // cache.del('frame30');
 
             //Send Success
             return res.json(result);
@@ -158,7 +158,7 @@ module.exports.getTop10 = async (req, res) => {
             result = cached_memes;
         } else {
             result = await Meme.find({ created: { "$gte": start, "$lt": end } }).sort({ likes: -1 }).limit(10);
-            cache.put('frame' + frame, result, 60 * 1000);
+            cache.put('frame' + frame, result, 1500);
         }
 
         return res.json(result);
