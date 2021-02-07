@@ -10,7 +10,7 @@ module.exports.get = async (req, res) => {
         //Caching Records Output for Performance
         let memes;
         var cached_memes = cache.get('memes');
-        if(cached_memes == null){
+        if(cached_memes !== null){
             memes = cached_memes;
         }else{
             memes = await Meme.find({}).sort({ created: -1 }).limit(100);
@@ -35,7 +35,7 @@ module.exports.getById = async (req, res) => {
             //Caching Result for Performance
             let meme;
             let cached_meme = cache.get(id);
-            if(cached_meme != null){
+            if(cached_meme !== null){
                 meme = cached_meme;
             }else{
                 meme = await Meme.findById(id);
@@ -144,7 +144,7 @@ module.exports.getTop10 = async (req, res) => {
 
         let result;
         var cached_memes = cache.get('frame'+frame);
-        if(cached_memes == null){
+        if(cached_memes !== null){
             result = cached_memes;
         }else{
             result = await Meme.find({ created: { "$gte": start, "$lt": end } }).sort({ likes: -1 }).limit(10);    
