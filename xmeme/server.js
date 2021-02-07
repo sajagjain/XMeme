@@ -21,6 +21,11 @@ app.use(express.static(path.join(__dirname,'public')));
 app.use('/memes',memeRouter);
 //Views Endpoints
 app.use('/',viewsRouter);
+//Handle Unknown Paths
+app.use('*',function(req,res){
+    res.status(404);
+    res.send('Resource Not Found');
+});
 
 app.listen(port,function(e){
     console.log('App Listening on port',port);
