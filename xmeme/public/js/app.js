@@ -28,6 +28,18 @@ function MemesClient() {
         }
         return Math.floor(seconds) + " seconds";
       }
+
+    this.isValidHttpUrl = function (string) {
+        let url;
+        
+        try {
+          url = new URL(string);
+        } catch (_) {
+          return false;  
+        }
+      
+        return url.protocol === "http:" || url.protocol === "https:";
+      }
 }
 
 MemesClient.prototype.init = function () {
@@ -52,8 +64,10 @@ MemesClient.prototype.initEvents = function () {
         var caption = $('#caption').val();
         var url = $('#url').val();
         var errMsg = [];
+        var isUrlValid = self.isValidHttpUrl(url);
+       
         
-        if (name.trim().length == 0 || caption.trim().length > 500 || url.trim().length == 0) {
+        if (name.trim().length == 0 || caption.trim().length > 500 || url.trim().length == 0 || !isUrlValid) {
             if(name.trim().length == 0){
                 errMsg.push("Name cannot be empty");
                 
@@ -63,6 +77,10 @@ MemesClient.prototype.initEvents = function () {
             }
             if(url.trim().length == 0){
                 errMsg.push("Url cannot be empty");
+            }
+
+            if(!isUrlValid){
+                errMsg.push("Url is not valid");
             }
 
             self.createAlert(false,errMsg);
@@ -90,11 +108,24 @@ MemesClient.prototype.initEvents = function () {
     });
     $(document).on('blur', '#url', function () {
         var url = $(this).val();
-        if (url.length > 0) {
-            $('#img-preview').attr('src', url);
-        } else {
-            $('#img-preview').attr('src', 'https://i.imgflip.com/4wymt6.jpg')
+
+        if(url.trim().length == 0){
+            $('#img-preview').attr('src', 'https://i.imgflip.com/4wymt6.jpg');
+            return;
         }
+
+        $.ajax({
+            url:url,
+            method: 'GET',
+            success: function(){
+                $('#img-preview').attr('src', url);
+            },
+            error: function(err){
+                $('#img-preview').attr('src', 'https://lh3.googleusercontent.com/proxy/uL-_Tdc3YMt8dtD7NiLwmn02HrpPduoOSnKGDGQdcMJAcXwh0qeTLk3rBihPf44P6pwLHuJiAvXtZwl_hyXoJra3VVpKcq_jcaiBSq0FVqCIPBHj8MD6l6WBpQ4DjKTpm_LTBjXbG2IKW6ENI8ssOU2GuVTdHq9Gy0o');
+            }
+        })
+
+       
     });
 
     $(document).on('click', '.theme-changer', function () {
