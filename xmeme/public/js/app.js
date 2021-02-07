@@ -77,9 +77,12 @@ MemesClient.prototype.initEvents = function () {
                     }
                     self.createAlert(true, "Meme Posted Successfully.");
                 },
-                err: function (err) {
+                error: function (err) {
                     console.log(err);
-                    self.createAlert(false, [`Request failed with code ${err.status} : ${err.statusText}`]);
+                    if(err.status == 409){
+                        self.createAlert(false, [`Meme already exist ${err.status} : ${err.statusText}`]);
+                    }else
+                        self.createAlert(false, [`Request failed with code ${err.status} : ${err.statusText}`]);
                 }
             });
         }
@@ -130,7 +133,7 @@ MemesClient.prototype.initEvents = function () {
                     meme.likes = noOfLikes;
                     $(currLikeBtnRef).siblings('p').text(`${noOfLikes} Likes`);
                 },
-                err: function(err){
+                error: function(err){
                     
                 }
             });

@@ -37,6 +37,12 @@ module.exports.post = async (req,res)=>{
     const created = new Date();
 
     let meme = new Meme({name,url,caption, created});
+
+    var alreadyExist = await Meme.findOne({name,url,caption});
+    if(alreadyExist != null){
+        res.status(409);
+        return res.json({});
+    }
     var result = await meme.save();
 
     res.status(201);

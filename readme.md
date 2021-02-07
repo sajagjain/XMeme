@@ -5,6 +5,7 @@ Pending Things:
 2. Logging
 3. Caching
 4. Forking based on cpu
+5. If already exist then send back error
 
 
 ##FrontEnd
