@@ -165,3 +165,11 @@ main {
     font-size: 25px;
     cursor:pointer;
 }
+
+body,a{
+    font-weight: 300 !important;
+}
+
+.badge{
+    font-weight:400 !important;
+}
