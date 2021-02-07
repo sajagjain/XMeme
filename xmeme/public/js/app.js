@@ -52,136 +52,6 @@ MemesClient.prototype.init = function () {
     });
 };
 
-MemesClient.prototype.initEvents = function () {
-    var self = this;
-    $(document).on('click', '#cancel-meme-btn', function () {
-        $('.side-nav').removeClass('d-flex').addClass('d-none');
-    });
-    $(document).on('click', '.open-create', function () {
-        $('.side-nav').addClass('d-flex').removeClass('d-none');
-    });
-    $(document).on('click', '#create-meme-btn', function () {
-        var name = $('#name').val();
-        var caption = $('#caption').val();
-        var url = $('#url').val();
-        var errMsg = [];
-        var isUrlValid = self.isValidHttpUrl(url);
-       
-        
-        if (name.trim().length == 0 || caption.trim().length > 500 || url.trim().length == 0 || !isUrlValid) {
-            if(name.trim().length == 0){
-                errMsg.push("Name cannot be empty");
-                
-            }
-            if(caption.trim().length > 500){
-                errMsg.push("Caption text cannot be greater than 500 characters");
-            }
-            if(url.trim().length == 0){
-                errMsg.push("Url cannot be empty");
-            }
-
-            if(!isUrlValid){
-                errMsg.push("Url is not valid");
-            }
-
-            self.createAlert(false,errMsg);
-         } else {
-            $.ajax({
-                url: `/memes`,
-                method: 'POST',
-                data:{name,caption,url},
-                success: (data) => {
-                    if (data.id !== null) {
-                        self.memes.unshift({ name, caption, url, created: new Date(), likes: 0 });
-                        self.showMemes();
-                    }
-                    self.createAlert(true, "Meme Posted Successfully.");
-                },
-                error: function (err) {
-                    console.log(err);
-                    if(err.status == 409){
-                        self.createAlert(false, [`Meme already exist ${err.status} : ${err.statusText}`]);
-                    }else
-                        self.createAlert(false, [`Request failed with code ${err.status} : ${err.statusText}`]);
-                }
-            });
-        }
-    });
-    $(document).on('blur', '#url', function () {
-        var url = $(this).val();
-
-        if(url.trim().length == 0){
-            $('#img-preview').attr('src', 'https://i.imgflip.com/4wymt6.jpg');
-            return;
-        }
-
-        $.ajax({
-            url:url,
-            method: 'GET',
-            success: function(){
-                $('#img-preview').attr('src', url);
-            },
-            error: function(err){
-                $('#img-preview').attr('src', 'https://lh3.googleusercontent.com/proxy/uL-_Tdc3YMt8dtD7NiLwmn02HrpPduoOSnKGDGQdcMJAcXwh0qeTLk3rBihPf44P6pwLHuJiAvXtZwl_hyXoJra3VVpKcq_jcaiBSq0FVqCIPBHj8MD6l6WBpQ4DjKTpm_LTBjXbG2IKW6ENI8ssOU2GuVTdHq9Gy0o');
-            }
-        })
-
-       
-    });
-
-    $(document).on('click', '.theme-changer', function () {
-        $('body').toggleClass('dark');
-        var isDark = $('body').hasClass('dark');
-        if(isDark){
-            localStorage.setItem("light",'false');
-        }else{
-            localStorage.setItem("light",'true');
-        }
-    
-    });
-
-    $(document).on('click', '.close-alert', function () {
-        $(this).parent().removeClass('d-flex').addClass("d-none");
-    });
-
-    $(document).on('click', '.meme-like-btn', function(){
-        var currLikeBtnRef = this;
-        var memeId = $(this).data('meme-id');
-        var meme = self.memes.find(a => a.id == memeId);
-        var noOfLikes = meme.likes;
-        var hasLiked = $(this).hasClass('liked');
-        if(hasLiked == false){
-            $(this).addClass('liked');
-            $(this).attr('name','heart');
-            localStorage.setItem(memeId,true);
-            noOfLikes += 1;
-        }else{
-            $(this).removeClass('liked');
-            $(this).attr('name','heart-outline');
-            localStorage.setItem(memeId,false);
-            noOfLikes -= 1;
-        }
-        
-        if(memeId !== null || memeId !== ''){
-            $.ajax({
-                url:`/memes/${memeId}`,
-                method: 'PATCH',
-                data: {
-                    likes: noOfLikes
-                },
-                success: (data)=>{
-                    meme.likes = noOfLikes;
-                    $(currLikeBtnRef).siblings('p').text(`${noOfLikes} Likes`);
-                },
-                error: function(err){
-                    
-                }
-            });
-        }
-    });
-
-}
-
 MemesClient.prototype.createAlert = function (isGood, msg) {
     if (isGood) {
         $('.create-meme-success-container').find('span').text(msg);
@@ -232,11 +102,16 @@ MemesClient.prototype.showMemes = function () {
                         <div class="meme-image">
                             <img src="${meme.url}" class="card-img-top" alt="...">
                         </div>
-                        <div class="card-body meme-action-container d-flex align-items-center">
-                            <ion-icon data-meme-id="${meme.id}" class="meme-like-btn 
-                                ${localStorage.getItem(meme.id) == "true"? 'liked':''}" 
-                                name="${localStorage.getItem(meme.id) == "true"? 'heart':'heart-outline'}"'></ion-icon>
-                            <p class="mb-0 ms-2">${meme.likes} Likes</p>
+                        <div class="card-body meme-action-container d-flex align-items-center justify-content-between">
+                            <div class="d-flex">
+                                <ion-icon data-meme-id="${meme.id}" class="meme-like-btn 
+                                    ${localStorage.getItem(meme.id) == "true"? 'liked':''}" 
+                                    name="${localStorage.getItem(meme.id) == "true"? 'heart':'heart-outline'}"'></ion-icon>
+                                <p class="mb-0 ms-2">${meme.likes} Likes</p>
+                            </div>
+                            <div class="d-flex">
+                                <ion-icon data-meme-id="${meme.id}" class="open-edit" name="create-outline"></ion-icon>
+                            </div>
                         </div>
                     </div>
                 </div>

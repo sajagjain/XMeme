@@ -18,6 +18,15 @@ body.dark .side-nav{
     color: white;
 }
 
+body.dark .side-nav-edit{
+    background: black;
+    color: white;
+}
+
+body.dark #edit-name:disabled{
+    color: #000000;
+}
+
 body.dark input{
     background-color: #151515;
     color: white;
@@ -51,6 +60,10 @@ body.dark .meme-btn{
 }
 
 body.dark #create-meme-btn{
+    background: -webkit-linear-gradient(45deg, #ff5894, #8441A4 80%);
+}
+
+body.dark #edit-meme-btn{
     background: -webkit-linear-gradient(45deg, #ff5894, #8441A4 80%);
 }
 

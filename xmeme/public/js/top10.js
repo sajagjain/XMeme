@@ -8,19 +8,6 @@ MemesClient.prototype.initTop10 = function () {
     });
 };
 
-MemesClient.prototype.initEventsTop10 = function(){
-    var self = this;
-    $(document).on('change','#top10-range',function(){
-        var curr = $('#top10-range').val() || 1;
-
-        self.getMemesTop10(curr,(data) => {
-            console.log(data);
-            self.top10 = [...data];
-            self.showTop10Memes();
-        });
-    });
-}
-
 MemesClient.prototype.getMemesTop10 = function (frame,cb) {
     $.ajax({
         url: `/memes/top10/${frame}`,

@@ -40,6 +40,17 @@
     height:100vh;
 }
 
+.side-nav-edit{
+    min-width: 400px;
+    position: absolute;
+    z-index: 2;
+    background: white;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    height:100vh;
+}
+
 label{
     font-size: 15px;
     margin-bottom: 5px;
@@ -55,6 +66,11 @@ label{
 
 .create-meme-btn-container{
     /* position: absolute; */
+    margin:10px;
+    text-align: end;
+}
+
+.edit-meme-btn-container{
     margin:10px;
     text-align: end;
 }
@@ -132,4 +148,12 @@ main {
     .side-nav{
         min-width: 100% !important;
     }
+    .side-nav-edit{
+        min-width: 100% !important;
+    }
+}
+
+.open-edit{
+    font-size: 25px;
+    cursor:pointer;
 }
