@@ -2,7 +2,7 @@
 
 Hi! I'm sure that you'll love **XMeme**. If you want to learn about how I build it, you can read through. If you want to see a demo [click me](https://xmeme-sajag.herokuapp.com). 
 
-XMeme is a meme hosting platform where you can create new memes for the world @icn-camera to see. XMeme is 🔥 packed 🔥 with features and has an Awesome UI.
+XMeme is a meme hosting platform where you can create new memes for the world to see. XMeme is 🔥 packed 🔥 with features and has an Awesome UI.
 
 Lets talk features first. 
 
