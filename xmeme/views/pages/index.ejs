@@ -40,8 +40,10 @@
         var client = new MemesClient();
         client.init();
 
-        if(localStorage.getItem("light") == 'true'){
+        if(localStorage.getItem("light") !== 'false'){
             $('body').removeClass('dark');
+        }else{
+            $('body').addClass('dark');
         }
     </script>
     <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>

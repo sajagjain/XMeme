@@ -14,7 +14,7 @@
     <link href="/css/dark-theme.css" rel="stylesheet" />
 </head>
 
-<body class="d-flex dark flex-column position-absolute" style="position: relative;height:100vh;width: 100vw;">
+<body class="d-flex flex-column position-absolute" style="position: relative;height:100vh;width: 100vw;">
     <!-- Header -->
     <header>
         <%- include('../partials/header-top10.ejs'); %>
@@ -40,8 +40,10 @@
         var client = new MemesClient();
         client.initTop10();
 
-        if(localStorage.getItem("light") == 'true'){
+        if(localStorage.getItem("light") !== 'false'){
             $('body').removeClass('dark');
+        }else{
+            $('body').addClass('dark');
         }
     </script>
     <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
