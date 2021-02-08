@@ -25,8 +25,6 @@ Lets talk features first.
 
 ## Peek Under the Hood
 
-> You say freak, I say unique.
-
 XMeme uses a NodeJS API in backend to serve the content. It has been tuned to give the best of performance from a machine. 
 
 ### Features
