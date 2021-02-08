@@ -22,11 +22,11 @@ sudo systemctl enable mongod
 
 sudo chown `whoami` /tmp/mongodb-27017.sock
 
-sudo mkdir -p /data/db
+sudo mkdir -p mongodb/data/db
 
 sudo service start mongod
 
-sudo mongod
+sudo mongod --dbpath=mongodb/data/db --fork --syslog
 
 #Node Install
 sudo apt install nodejs -y
