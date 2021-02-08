@@ -16,6 +16,7 @@
     transition: transform 0.5s;
     border-radius: 0px !important;
     height: 350px;
+    min-height: 350px;
 }
 
 .theme-changer{
