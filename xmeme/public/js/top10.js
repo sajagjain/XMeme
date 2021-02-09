@@ -31,7 +31,7 @@ MemesClient.prototype.showTop10Memes = function(){
     if (this.top10 && this.top10.length > 0) {
         this.top10.forEach((meme,i) => {
             html += `
-                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                <div class="c-flex-card col-lg-3 col-md-6 col-sm-12 col-xs-12">
                     <div class="card shadow meme-card border-0 mt-5">
                         <div class="card-body">
                             <h5 class="card-title mb-0">#${i+1} ${meme.name}</h5>
