@@ -174,3 +174,17 @@ body,a{
 p.badge{
     font-weight:400 !important;
 }
+
+.meme-card{
+    width:100%;
+
+}
+
+.meme-card .meme-action-container{
+    max-height: 57px;
+}
+
+.c-flex-card{
+    display: flex;
+    align-items: stretch;
+}
