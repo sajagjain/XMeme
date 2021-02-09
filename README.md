@@ -41,4 +41,4 @@ Light Theme:
 ![Create Light Mode](https://i.ibb.co/wcLQK3J/image.png)
 Dark Theme:
 ![Home Dark Mode](https://i.ibb.co/Jc4N5tb/image.png)
-![Create Dark Mode](https://i.ibb.co/dKKf0fr/image.png)
+![Create Dark Mode](https://i.ibb.co/ZTTf6fV/image.png)
