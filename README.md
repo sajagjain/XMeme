@@ -37,8 +37,8 @@ XMeme uses a NodeJS API in backend to serve the content. It has been tuned to gi
 ## Screenshots
 
 Light Theme:
-![enter image description here](https://i.ibb.co/ggSBnF0/Home-Light.png)
-![enter image description here](https://i.ibb.co/wrxtF7B/image.png)
+![Home Light Mode](https://i.ibb.co/zxCXkfS/image.png)
+![Create Light Mode](https://i.ibb.co/wcLQK3J/image.png)
 Dark Theme:
-![enter image description here](https://i.ibb.co/fYqZBND/image.png)
-![enter image description here](https://i.ibb.co/ky7Fw3Z/image.png)
+![Home Dark Mode](https://i.ibb.co/Jc4N5tb/image.png)
+![Create Dark Mode](https://i.ibb.co/dKKf0fr/image.png)
