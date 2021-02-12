@@ -88,6 +88,11 @@ MemesClient.prototype.initEvents = function () {
                         self.memes.unshift({ id: data.id,name, caption, url, created: new Date(), likes: 0 });
                         self.showMemes();
                     }
+                    //Resetting Field to Empty
+                    $('#name').val('');
+                    $('#caption').val('');
+                    $('#url').val('');
+                    $('#url').trigger('blur');
                     self.createAlert(true, "Meme Posted Successfully.");
                 },
                 error: function (err) {

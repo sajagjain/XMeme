@@ -36,7 +36,7 @@ function MemesClient() {
         
         try {
           url = new URL(string);
-        } catch (_) {
+        } catch (ex) {
           return false;  
         }
       
@@ -56,9 +56,9 @@ function MemesClient() {
                 $(selector).attr('src', url);
             },
             error: function (err) {
-                $(selector).attr('src', 'https://lh3.googleusercontent.com/proxy/uL-_Tdc3YMt8dtD7NiLwmn02HrpPduoOSnKGDGQdcMJAcXwh0qeTLk3rBihPf44P6pwLHuJiAvXtZwl_hyXoJra3VVpKcq_jcaiBSq0FVqCIPBHj8MD6l6WBpQ4DjKTpm_LTBjXbG2IKW6ENI8ssOU2GuVTdHq9Gy0o');
+                $(selector).attr('src', 'https://i.ibb.co/CsKZKds/WRONG-URL.png');
             }
-        })
+        });
     }
 }
 
