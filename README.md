@@ -8,6 +8,7 @@ Lets talk features first.
 
 > **Note:** Screenshots ⚰️ buried ⚰️ below.
 
+> **This App Uses EJS for Static Page Rendering and call the APIs with the help of Ajax calls to render data dynamically**
 
 ## Client App
 
@@ -19,7 +20,8 @@ Lets talk features first.
  - Create 🖊️ Meme with Preview
  - Edit 🖊️ Meme
  - Like ❤️ Meme
- - Dark Theme
+ - **Dark Theme**
+ - **Dynamic Data Rendering using Ajax Calls**
  - Time Since Meme Posted
  - Field Validations and Server Error Messages on request fail
 
@@ -36,9 +38,14 @@ XMeme uses a NodeJS API in backend to serve the content. It has been tuned to gi
 
 ## Screenshots
 
-Light Theme:
-![Home Light Mode](https://i.ibb.co/zxCXkfS/image.png)
+Light Theme Home:
+![Home Light Mode](https://i.ibb.co/GFSfsKW/image.png)
+
+Dark Theme Home:
+![Home Dark Mode](https://i.ibb.co/1Kq1n7W/image.png)
+
+Light Theme Edit Mode:
 ![Create Light Mode](https://i.ibb.co/wcLQK3J/image.png)
-Dark Theme:
-![Home Dark Mode](https://i.ibb.co/Jc4N5tb/image.png)
+
+Dark Theme Edit Mode:
 ![Create Dark Mode](https://i.ibb.co/ZTTf6fV/image.png)
