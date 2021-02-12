@@ -204,7 +204,7 @@ MemesClient.prototype.initEvents = function () {
 MemesClient.prototype.initEventsTop10 = function () {
     var self = this;
     $(document).on('change', '#top10-range', function () {
-        var curr = $('#top10-range').val() || 1;
+        var curr = $('#top10-range').val() || 30;
 
         self.getMemesTop10(curr, (data) => {
             console.log(data);
