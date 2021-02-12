@@ -2,7 +2,7 @@
 
 //Top 10 Initialized Function
 MemesClient.prototype.initTop10 = function () {
-    this.getMemesTop10(1,(data) => {
+    this.getMemesTop10(30,(data) => {
         console.log(data);
         this.top10 = [...data];
         this.showTop10Memes();
