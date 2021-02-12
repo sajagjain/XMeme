@@ -118,7 +118,7 @@ MemesClient.prototype.showMemes = function () {
                 <div class="c-flex-card col-lg-3 col-md-6 col-sm-12 col-xs-12">
                     <div class="card shadow meme-card border-0 mt-5">
                         <div class="card-body">
-                            <h5 class="card-title mb-0">${meme.name}</h5>
+                            <h5 class="card-title mb-0" style="margin-right:80px">${meme.name}</h5>
                             <p class="card-text">${meme.caption}</p>
                             <p class="badge minutes-ago">${this.timeSince(new Date(meme.created))} ago</p>
                         </div>
