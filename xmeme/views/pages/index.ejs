@@ -23,6 +23,19 @@
     <main style="overflow: auto;">
         <%- include('../partials/sidenav.ejs'); %>
         <%- include('../partials/sidenav-edit.ejs'); %>
+        
+        <!-- Create Button -->
+        <div class="container-fluid mt-5"
+        style="display: flex;align-items: baseline;justify-content: flex-start;flex-direction: column;">
+        <!-- <a class="navbar-brand" href="#" style="font-size: 3rem;">XMeme</a> -->
+            <div class="d-flex">
+                <a class="open-create nav-link badge" href="#"
+                style="background: -webkit-linear-gradient(45deg, #ff5894, #8441A4 80%);color: white;font-size: 20px;">
+                Create New
+                </a>
+            </div>
+        </div>
+
         <div class="container-fluid">
             <div class="row" id="meme-container">
             </div>
