@@ -10,6 +10,10 @@ Lets talk features first.
 
 > **This App Uses EJS for Static Page Rendering and call the APIs with the help of Ajax calls to render data dynamically**
 
+> **The beautiful user interface of the application uses same old same old bootstrap**
+
+> **Do check out the FrontEnd Javascript Design Pattern using Constructor Functions. You'll fall in ❤️ with Javascript all over again.**
+
 ## Client App
 
 **XMeme** client app is designed with keeping asthetics & usability in mind. It has a very minimalistic and clean user interface.
