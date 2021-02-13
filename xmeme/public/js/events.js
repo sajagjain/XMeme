@@ -82,7 +82,8 @@ MemesClient.prototype.initEvents = function () {
             $.ajax({
                 url: `/memes`,
                 method: 'POST',
-                data: { name, caption, url },
+                contentType: 'application/json',
+                data: JSON.stringify({ name, caption, url }),
                 success: (data) => {
                     if (data.id !== null) {
                         self.memes.unshift({ id: data.id,name, caption, url, created: new Date(), likes: 0 });
@@ -146,7 +147,8 @@ MemesClient.prototype.initEvents = function () {
             $.ajax({
                 url: `/memes/${memeId}`,
                 method: 'PATCH',
-                data: data,
+                contentType: 'application/json',
+                data: JSON.stringify(data),
                 success: (data) => {
 
                     currMeme.caption = caption;

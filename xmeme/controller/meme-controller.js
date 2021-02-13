@@ -1,6 +1,7 @@
 const Meme = require('../models/meme');
 const mongoose = require('mongoose');
 const cache = require('memory-cache');
+const isImage = require('is-image-url');
 
 module.exports.get = async (req, res) => {
     try {
@@ -71,8 +72,10 @@ module.exports.post = async (req, res) => {
         let caption = body["caption"];
         const created = new Date();
 
+        const isValidImage = isImage(url);
+        
         //Check if Data
-        if (body && name && url) {
+        if (body && name && url && isValidImage) {
             let meme = new Meme({ name, url, caption, created });
 
             var alreadyExist = await Meme.findOne({ name, url, caption });
@@ -107,8 +110,14 @@ module.exports.patch = async (req, res) => {
         var updatedMeme = req.body;
         var id = req.params.id;
 
+        let isValidImage = true;
+        if(req.body["url"] !== undefined){
+             isValidImage = isImage(req.body["url"]);
+        }
+       
         //Check if data is not null
-        if (id != null && mongoose.Types.ObjectId.isValid(id) && updatedMeme != null) {
+        if (id != null && mongoose.Types.ObjectId.isValid(id) && updatedMeme != null && isValidImage) 
+        {
             var result = await Meme.updateOne({ _id: new mongoose.Types.ObjectId(id) }, { $set: updatedMeme });
 
             // //Remove Memes & id from cache for consistency
