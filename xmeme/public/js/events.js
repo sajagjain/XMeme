@@ -169,6 +169,9 @@ MemesClient.prototype.initEvents = function () {
     });
 
     $(document).on('click', '.meme-like-btn', function () {
+        var likeBtnRef = this;
+        $(likeBtnRef).css('pointer-events','none');
+
         var currLikeBtnRef = this;
         var memeId = $(this).data('meme-id');
         var meme = self.memes.find(a => a.id == memeId);
@@ -198,9 +201,10 @@ MemesClient.prototype.initEvents = function () {
                 success: (data) => {
                     meme.likes = noOfLikes;
                     $(currLikeBtnRef).siblings('p').text(`${noOfLikes} Likes`);
+                    $(likeBtnRef).css('pointer-events','all');
                 },
                 error: function (err) {
-
+                    $(likeBtnRef).css('pointer-events','all');
                 }
             });
         }
