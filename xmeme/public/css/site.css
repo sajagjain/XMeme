@@ -150,6 +150,20 @@ main{
     }
 }
 
+@media screen and (max-width: 400px){
+    .navbar > .container-fluid{
+        flex-wrap: wrap;
+    }
+
+    nav{
+        align-items: flex-start !important;
+    }
+
+    nav > .theme-changer{
+        margin-top: 5px;
+    }
+}
+
 .open-edit{
     font-size: 25px;
     cursor:pointer;
