@@ -1,5 +1,6 @@
 const cluster = require('cluster');
 const cCPUs = require('os').cpus().length;
+const requestIp = require('request-ip');
 
 //Instantiating DB
 require('dotenv').config();
@@ -37,6 +38,13 @@ else {
     app.use(bodyParser.urlencoded({ extended: false }));
     app.use(express.static(path.join(__dirname, 'public')));
 
+    app.use(requestIp.mw());
+ 
+    app.use(function(req, res, next) {
+        const ip = req.clientIp;
+        console.log('Client IP:'+ip);
+        next();
+    });
 
     //API: Meme Related Calls & Operations
     app.use('/memes', memeRouter);
