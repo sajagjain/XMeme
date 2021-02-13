@@ -162,6 +162,10 @@ main{
     nav > .theme-changer{
         margin-top: 5px;
     }
+
+    #navbarNav > ul > li:first-child > a{
+        padding-left: 0px !important;
+    }
 }
 
 .open-edit{
