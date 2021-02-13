@@ -28,6 +28,7 @@ Lets talk features first.
  - **Dynamic Data Rendering using Ajax Calls**
  - Time Ago based Timestamp
  - Field Validations and Server Error Messages on request fail
+ - Open Graph Tags for Social Media Link Preview
 
 ## Peek Under the Hood
 
