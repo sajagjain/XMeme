@@ -22,7 +22,7 @@ Lets talk features first.
  - Like ❤️ Meme
  - **Dark Theme**
  - **Dynamic Data Rendering using Ajax Calls**
- - Time Since Meme Posted
+ - Time Ago based Timestamp
  - Field Validations and Server Error Messages on request fail
 
 ## Peek Under the Hood
