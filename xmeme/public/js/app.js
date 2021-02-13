@@ -123,7 +123,7 @@ MemesClient.prototype.showMemes = function () {
                             <p class="badge minutes-ago">${this.timeSince(new Date(meme.created))} ago</p>
                         </div>
                         <div class="meme-image">
-                            <img src="${meme.url}" class="card-img-top" alt="...">
+                            <img src="${meme.url}" class="card-img-top" alt="..." onerror="if (this.src != 'https://i.ibb.co/3fs2L5C/image.png') this.src = 'https://i.ibb.co/3fs2L5C/image.png';">
                         </div>
                         <div class="card-body meme-action-container d-flex align-items-center justify-content-between">
                             <div class="d-flex">
