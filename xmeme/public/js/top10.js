@@ -44,7 +44,8 @@ MemesClient.prototype.showTop10Memes = function(){
                         <div class="card-body meme-action-container d-flex align-items-center">
                             <ion-icon data-meme-id="${meme.id}" class="meme-like-btn liked" 
                                 name="heart"'></ion-icon>
-                            <p class="mb-0 ms-2">${filterXSS(meme.likes)} Likes</p>
+                            <p class="mb-0 ms-2">${filterXSS((!isNaN(meme.likes))
+                                && meme.likes != 0 ? meme.likes:"0")} Likes</p>
                         </div>
                     </div>
                 </div>

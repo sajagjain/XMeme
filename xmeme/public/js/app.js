@@ -130,7 +130,8 @@ MemesClient.prototype.showMemes = function () {
                                 <ion-icon data-meme-id="${meme.id}" class="meme-like-btn 
                                     ${localStorage.getItem(meme.id) == "true"? 'liked':''}" 
                                     name="${localStorage.getItem(meme.id) == "true"? 'heart':'heart-outline'}"'></ion-icon>
-                                <p class="mb-0 ms-2">${filterXSS(meme.likes)} Likes</p>
+                                    <p class="mb-0 ms-2">${filterXSS((!isNaN(meme.likes))
+                                        && meme.likes != 0 ? meme.likes:"0")} Likes</p>
                             </div>
                             <div class="d-flex">
                                 <ion-icon data-meme-id="${meme.id}" class="open-edit" name="create-outline"></ion-icon>

@@ -110,6 +110,12 @@ module.exports.patch = async (req, res) => {
         var updatedMeme = req.body;
         var id = req.params.id;
 
+        if(req.body.likes === "undefined" 
+        || req.body.likes === "null" 
+        || isNaN(req.body.likes)){
+            req.body.likes = 0;
+        }
+
         let isValidImage = true;
         if(req.body["url"] !== undefined){
              isValidImage = isImage(req.body["url"]);
