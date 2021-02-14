@@ -2,6 +2,7 @@ const Meme = require('../models/meme');
 const mongoose = require('mongoose');
 const cache = require('memory-cache');
 const isImage = require('is-image-url');
+const isHtml = require('is-html');
 
 module.exports.get = async (req, res) => {
     try {
@@ -65,6 +66,22 @@ module.exports.getById = async (req, res) => {
 
 module.exports.post = async (req, res) => {
     try {
+        //Reject if Empty Body
+        if(req.body == undefined || req.body == null 
+            ||Object.keys(req.body) == 0)
+        {
+            return res.boom.badRequest('Bad Request',{});
+        }
+        //Reject if it contains any fields except likes url caption
+        var keys = Object.keys(req.body);
+        if(keys != null && keys.filter(a=>a != "name" && a != "url" && a !="caption").length > 0){
+            return res.boom.badRequest('Additional Fields Not Supported',{});
+        }
+        //Reject Request if contains html
+        if(isHtml(req.body)){
+            return res.boom.badRequest('Html not supported', {});
+        }
+
         let body = req.body;
 
         let name = body["name"];
@@ -107,6 +124,23 @@ module.exports.post = async (req, res) => {
 
 module.exports.patch = async (req, res) => {
     try {
+
+        //Reject if Empty Body
+        if(req.body == undefined || req.body == null 
+            ||Object.keys(req.body) == 0)
+        {
+            return res.boom.badRequest('Bad Request',{});
+        }
+        //Reject if it contains any fields except likes url caption
+        var keys = Object.keys(req.body);
+        if(keys != null && keys.filter(a=>a != "likes" && a != "url" && a !="caption").length > 0){
+            return res.boom.badRequest('Additional Fields Not Supported',{});
+        }
+        //Reject Request if contains html
+        if(isHtml(req.body)){
+            return res.boom.badRequest('Html not supported', {});
+        }
+
         var updatedMeme = req.body;
         var id = req.params.id;
 

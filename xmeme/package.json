@@ -15,6 +15,7 @@
     "ejs": "^3.1.5",
     "express": "^4.17.1",
     "express-boom": "^3.0.0",
+    "is-html": "^2.0.0",
     "is-image-url": "^1.1.8",
     "memory-cache": "^0.2.0",
     "mongoose": "^5.11.15",
