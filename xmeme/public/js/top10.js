@@ -34,17 +34,17 @@ MemesClient.prototype.showTop10Memes = function(){
                 <div class="c-flex-card col-lg-3 col-md-6 col-sm-12 col-xs-12">
                     <div class="card shadow meme-card border-0 mt-5">
                         <div class="card-body">
-                            <h5 class="card-title mb-0" style="margin-right:80px">#${i+1} ${meme.name}</h5>
-                            <p class="card-text">${meme.caption}</p>
+                            <h5 class="card-title mb-0" style="margin-right:80px">#${i+1} ${filterXSS(meme.name)}</h5>
+                            <p class="card-text">${filterXSS(meme.caption)}</p>
                             <p class="badge minutes-ago">${this.timeSince(new Date(meme.created))} ago</p>
                         </div>
                         <div class="meme-image">
-                            <img src="${meme.url}" class="card-img-top" alt="..." onerror="if (this.src != 'https://i.ibb.co/3fs2L5C/image.png') this.src = 'https://i.ibb.co/3fs2L5C/image.png';">
+                            <img src="${filterXSS(meme.url)}" class="card-img-top" alt="..." onerror="if (this.src != 'https://i.ibb.co/3fs2L5C/image.png') this.src = 'https://i.ibb.co/3fs2L5C/image.png';">
                         </div>
                         <div class="card-body meme-action-container d-flex align-items-center">
                             <ion-icon data-meme-id="${meme.id}" class="meme-like-btn liked" 
                                 name="heart"'></ion-icon>
-                            <p class="mb-0 ms-2">${meme.likes} Likes</p>
+                            <p class="mb-0 ms-2">${filterXSS(meme.likes)} Likes</p>
                         </div>
                     </div>
                 </div>
