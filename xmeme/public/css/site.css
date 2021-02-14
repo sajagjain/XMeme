@@ -194,3 +194,7 @@ p.badge{
     display: flex;
     align-items: stretch;
 }
+
+.card-text{
+    white-space: break-spaces;
+}
