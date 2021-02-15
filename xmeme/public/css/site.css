@@ -197,4 +197,6 @@ p.badge{
 
 .card-text{
     white-space: break-spaces;
+    max-height: 100px;
+    overflow: auto;
 }
