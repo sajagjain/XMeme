@@ -81,6 +81,14 @@ module.exports.post = async (req, res) => {
         if(isHtml(JSON.stringify(req.body))){
             return res.boom.badRequest('Html not supported', {});
         }
+        //Reject Request if name contains more than 100
+        if(req.body.name === undefined || req.body.name.length > 100){
+            return res.boom.badRequest('Name Cannot be greater than 100 characters', {});
+        }
+        //Reject Request if caption contains more than 500 characters
+        if(req.body.caption === undefined || req.body.caption.length > 500){
+            return res.boom.badRequest('Caption Cannot be greater than 500 characters', {});
+        }
 
         let body = req.body;
 
@@ -139,6 +147,10 @@ module.exports.patch = async (req, res) => {
         //Reject Request if contains html
         if(isHtml(JSON.stringify(req.body))){
             return res.boom.badRequest('Html not supported', {});
+        }
+        //Reject Request if caption contains more than 500 characters
+        if(req.body.caption === undefined || req.body.caption.length > 500){
+            return res.boom.badRequest('Caption Cannot be greater than 500 characters', {});
         }
 
         var updatedMeme = req.body;
