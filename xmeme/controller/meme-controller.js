@@ -78,7 +78,7 @@ module.exports.post = async (req, res) => {
             return res.boom.badRequest('Additional Fields Not Supported',{});
         }
         //Reject Request if contains html
-        if(isHtml(req.body)){
+        if(isHtml(JSON.stringify(req.body))){
             return res.boom.badRequest('Html not supported', {});
         }
 
@@ -137,7 +137,7 @@ module.exports.patch = async (req, res) => {
             return res.boom.badRequest('Additional Fields Not Supported',{});
         }
         //Reject Request if contains html
-        if(isHtml(req.body)){
+        if(isHtml(JSON.stringify(req.body))){
             return res.boom.badRequest('Html not supported', {});
         }
 
