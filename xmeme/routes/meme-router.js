@@ -1,7 +1,7 @@
 const MemeController = require('../controller/meme-controller');
 const express = require('express');
 var Ddos = require('ddos');
-var ddos = new Ddos({burst:1, limit:4});
+var ddos = new Ddos({burst:1, limit:3});
 
 const router = express.Router();
 
