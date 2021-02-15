@@ -1,6 +1,7 @@
 const cluster = require('cluster');
 const cCPUs = require('os').cpus().length;
 const requestIp = require('request-ip');
+const Ddos = require('ddos');
 
 //Instantiating DB
 require('dotenv').config();
@@ -8,10 +9,12 @@ require('./db/db');
 
 const bodyParser = require('body-parser');
 const memeRouter = require('./routes/meme-router');
+const memeRouterCU = require('./routes/meme-cu-router');
 const viewsRouter = require('./routes/views-router');
 const path = require('path');
 const express = require('express');
 const boom = require('express-boom');
+var ddos = new Ddos({burst:1, limit:3});
 
 if (cluster.isMaster) {
     // Create a worker for each CPU
@@ -48,6 +51,7 @@ else {
 
     //API: Meme Related Calls & Operations
     app.use('/memes', memeRouter);
+    app.use('/memes',ddos.express,memeRouterCU);
     //Views Endpoints
     app.use('/', viewsRouter);
     //Handle Unknown Paths
