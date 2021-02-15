@@ -16,7 +16,8 @@ const store = new MongooseStore(model);
 const bruteforce = new ExpressBrute(store,{
     freeRetries: 5,
     minWait: 60*60*1000,
-    maxWait: 60*60*1000
+    maxWait: 60*60*1000,
+    lifetime: 60*60*1000
 });
 //END: Cock Block Setup
 
