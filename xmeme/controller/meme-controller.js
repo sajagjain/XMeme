@@ -149,7 +149,7 @@ module.exports.patch = async (req, res) => {
             return res.boom.badRequest('Html not supported', {});
         }
         //Reject Request if caption contains more than 500 characters
-        if(req.body.caption === undefined || req.body.caption.length > 500){
+        if(req.body.caption !== undefined && req.body.caption.length > 500){
             return res.boom.badRequest('Caption Cannot be greater than 500 characters', {});
         }
 
@@ -158,7 +158,8 @@ module.exports.patch = async (req, res) => {
 
         if(req.body.likes === "undefined" 
         || req.body.likes === "null" 
-        || isNaN(req.body.likes)){
+        || isNaN(req.body.likes)
+        || req.body.likes < 0){
             req.body.likes = 0;
         }
 

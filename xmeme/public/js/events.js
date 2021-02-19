@@ -180,14 +180,8 @@ MemesClient.prototype.initEvents = function () {
 
         //Check if Already Liked if yes then unlike else like
         if (hasLiked == false) {
-            $(this).addClass('liked');
-            $(this).attr('name', 'heart');
-            localStorage.setItem(memeId, true);
             noOfLikes += 1;
         } else {
-            $(this).removeClass('liked');
-            $(this).attr('name', 'heart-outline');
-            localStorage.setItem(memeId, false);
             noOfLikes -= 1;
         }
 
@@ -202,6 +196,15 @@ MemesClient.prototype.initEvents = function () {
                     meme.likes = noOfLikes;
                     $(currLikeBtnRef).siblings('p').text(`${noOfLikes} Likes`);
                     $(likeBtnRef).css('pointer-events','all');
+                    if (hasLiked == false) {
+                        $(this).addClass('liked');
+                        $(this).attr('name', 'heart');
+                        localStorage.setItem(memeId, true);
+                    } else {
+                        $(this).removeClass('liked');
+                        $(this).attr('name', 'heart-outline');
+                        localStorage.setItem(memeId, false);
+                    }
                 },
                 error: function (err) {
                     $(likeBtnRef).css('pointer-events','all');
